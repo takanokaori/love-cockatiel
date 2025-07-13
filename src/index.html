@@ -19,14 +19,14 @@
   <script type="module">
     async function init() {
       // セッション初期化
-      await fetch('/app/session-init', {
+      await fetch('/api/session-init', {
         method: "POST",
         credentials: "include",
       });
 
       // Instagram API呼び出し
       // fetch("https://your-vercel-app.vercel.app/api/instagram") // 他サイトからの呼び出し
-      const res = await fetch('/app/instagram', {
+      const res = await fetch('/api/instagram', {
         credentials: "include",
       }).catch(err => {
         console.error(err);

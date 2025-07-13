@@ -2,9 +2,9 @@ import express from "express";
 import session from "express-session";
 import dotenv from "dotenv";
 // import jwt from "jsonwebtoken";
-// import crypto from "crypto";
+// import { verifyJwtFromCookies } from "./lib/auth.js";
 import cors from "cors";
-import { verifyJwtFromCookies } from "./lib/auth.js";
+// import crypto from "crypto";
 
 dotenv.config();
 
@@ -32,7 +32,7 @@ app.use(session({
 
 // ログイン
 /*
-app.post('/app/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   // ここは本来DBでユーザー認証する
   if (username === 'dev' && password === 'password') {
@@ -71,7 +71,7 @@ app.post('/app/login', (req, res) => {
 
 // ログアウト
 /*
-app.post("/app/logout", (req, res) => {
+app.post("/api/logout", (req, res) => {
   req.session.destroy(err => {
     if (err) {
       return res.status(500).json({ error: "Logout failed" });
@@ -82,7 +82,7 @@ app.post("/app/logout", (req, res) => {
 });
 */
 
-app.post('/app/session-init', (req, res) => {
+app.post('/api/session-init', (req, res) => {
   req.session.regenerate(err => {
     if (err) {
       console.error(err);
@@ -92,7 +92,7 @@ app.post('/app/session-init', (req, res) => {
   });
 });
 
-app.get('/app/instagram', async (req, res) => {
+app.get('/api/instagram', async (req, res) => {
   // Cookie認証
   /*
   const decoded = verifyJwtFromCookies(req);

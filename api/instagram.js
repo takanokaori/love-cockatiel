@@ -19,29 +19,32 @@ export default async function handler(req, res) {
   // }
 
   if (req.method === "GET") {
+    // Cookie認証
+    const decoded = verifyJwtFromCookies(req);
+    if (!decoded) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
 
     try {
-      // Cookie認証
-      const decoded = verifyJwtFromCookies(req);
-      console.log("User info:", decoded);
-      if (!decoded) {
-        return res.status(401).json({ error: "Unauthorized" });
-      }
-
       // Instagram Graph APIを呼ぶ
       const instagramToken = process.env.INSTAGRAM_TOKEN;
-      const url = `https://graph.facebook.com/v23.0/me?fields=id,caption,media_url,permalink,timestamp&access_token=${instagramToken}`;
+      const url = `https://graph.facebook.com/v23.0/17841475622221032?fields=media%7Bmedia_url%2Ccaption%2Cpermalink%2Ctimestamp%7D&access_token=${instagramToken}`;
 
       const response = await fetch(url);
+      if (!response.ok){
+        const errorText = await response.text();
+        console.error("Fetch failed:", errorText);
+        return res.status(500).json({ error: "Instagram API error (!response)", details: errorText });
+      }
+
       const data = await response.json();
 
       // 最新3件だけ返す
-      const latestThree = data.data?.slice(0, 3) || [];
-
-      res.status(200).json(latestThree);
+      const latestThree = data.media?.data?.slice(0, 3) || [];
+      console.log("latestThree", latestThree);
+      return res.json(latestThree);
     } catch (err) {
-      console.error(err);
-      return res.status(401).json({ success: false, error: err.message || "Unauthorized" });
+      return res.status(500).json({ error: "Instagram API error ( Instagram Graph API )" });
     }
 
   } else {
