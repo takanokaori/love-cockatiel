@@ -1,0 +1,102 @@
+// common mixin
+
+@mixin flex($wrap: false, $valign: top, $align: between){
+	display: -webkit-box; // Android
+	display: -ms-flexbox; // IE10
+	display: -webkit-flex;
+	display: flex;
+	@if($wrap==true){
+		-webkit-flex-wrap: wrap;
+		flex-wrap:         wrap;
+	}
+	@if($valign==top){
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		-webkit-align-items: flex-start;
+		align-items:         flex-start;
+	}@else if($valign==center){
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items:         center;
+	}@else if($valign==bottom){
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		-webkit-align-items: flex-end;
+		align-items:         flex-end;
+	}@else if($valign==stretch){
+		-webkit-box-align: stretch;
+		-ms-flex-align: stretch;
+		-webkit-align-items: stretch;
+		align-items:         stretch;
+	}
+	@if($align==left){
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		-webkit-justify-content: flex-start;
+		justify-content:         flex-start;
+	}@else if($align==center){
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content:         center;
+	}@else if($align==right){
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		-webkit-justify-content: flex-end;
+		justify-content:         flex-end;
+	}@else if($align==between){
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		justify-content:         space-between;
+	}@else if($align==around){
+		-webkit-justify-content: space-around;
+		justify-content: space-around;
+	}
+}
+
+@keyframes fadein{
+  0%{
+    opacity: 0;
+    visibility: visible;
+    display: none;
+  }
+  99%{
+    opacity: 1;
+    visibility: visible;
+    display: none;
+  }
+  100%{
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+}
+@keyframes fadeout{
+  0%{
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+  99%{
+    opacity: 0;
+    visibility: visible;
+    display: block;
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+@mixin fade($in: true, $duration: .5s, $mode: forwards){
+  @if($in==true){
+    animation-name: fadein;
+  }@else{
+    animation-name: fadeout;
+  }
+  animation-duration: $duration;
+  animation-timing-function: ease;
+  animation-fill-mode: $mode;
+}

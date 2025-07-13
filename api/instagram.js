@@ -1,11 +1,9 @@
 // api/instagram.js
 
-const renderURL = '';
-
-import jwt from "jsonwebtoken";
+import { verifyJwtFromCookies } from "@/lib/auth";
 
 export default async function handler(req, res) {
-  // CORSヘッダーの設定
+  // 他サイトからの呼び出し（CORSヘッダーの設定）
   /* 複数ドメインへの許可
   const allowedOrigins = ["https://your-site.com", "https://another-site.com"];
   const origin = req.headers.origin;
@@ -13,30 +11,27 @@ export default async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
   */
-  res.setHeader("Access-Control-Allow-Origin", "https://your-site.com");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (req.method === "OPTIONS") { // プリフライトリクエストの対応
-    return res.status(200).end();
-  }
-
-  // Authorization ヘッダを確認
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    return res.status(401).json({ error: "Missing Authorization header" });
-  }
-  const token = authHeader.split(" ")[1];
+  // res.setHeader("Access-Control-Allow-Origin", "https://your-site.com");
+  // res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  // if (req.method === "OPTIONS") { // プリフライトリクエスト
+  //   return res.status(200).end();
+  // }
 
   if (req.method === "GET") {
-    // JWT 検証
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("UserID:", decoded.userId);
-
-    // Instagram Graph APIを呼ぶ
-    const token = process.env.INSTAGRAM_TOKEN;
-    const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,timestamp&access_token=${token}`;
 
     try {
+      // Cookie認証
+      const decoded = verifyJwtFromCookies(req);
+      console.log("User info:", decoded);
+      if (!decoded) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      // Instagram Graph APIを呼ぶ
+      const instagramToken = process.env.INSTAGRAM_TOKEN;
+      const url = `https://graph.facebook.com/v23.0/me?fields=id,caption,media_url,permalink,timestamp&access_token=${instagramToken}`;
+
       const response = await fetch(url);
       const data = await response.json();
 
@@ -44,9 +39,11 @@ export default async function handler(req, res) {
       const latestThree = data.data?.slice(0, 3) || [];
 
       res.status(200).json(latestThree);
-    } catch (e) {
-      res.status(500).json({ error: "Failed to fetch Instagram data." });
+    } catch (err) {
+      console.error(err);
+      return res.status(401).json({ success: false, error: err.message || "Unauthorized" });
     }
+
   } else {
     res.status(405).json({ error: "Method Not Allowed" });
   }
