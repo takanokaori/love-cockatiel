@@ -1,6 +1,6 @@
 // api/instagram.js
 
-import { verifyJwtFromCookies } from "../lib/auth";
+import { verifyJwtFromCookies } from "../lib/auth.js";
 
 export default async function handler(req, res) {
   // 他サイトからの呼び出し（CORSヘッダーの設定）
