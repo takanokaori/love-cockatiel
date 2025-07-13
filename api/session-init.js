@@ -15,7 +15,7 @@ export default function handler(req, res) {
     );
     res.setHeader(
       'Set-Cookie',
-      `token=${encodeURIComponent(token)}; HttpOnly; Path=/; Max-Age=3600; ${process.env.NODE_ENV === "production" ? 'Secure' : ''} SameSite=Strict`
+      `token=${encodeURIComponent(token)}; HttpOnly; Path=/; Max-Age=3600; Secure; SameSite=Strict`
     );
     return res.status(200).json({ success: true });
   } catch (err) {
