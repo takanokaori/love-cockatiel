@@ -41,7 +41,6 @@ export default async function handler(req, res) {
 
       // 最新3件だけ返す
       const latestThree = data.media?.data?.slice(0, 3) || [];
-      console.log("latestThree", latestThree);
       return res.json(latestThree);
     } catch (err) {
       return res.status(500).json({ error: "Instagram API error ( Instagram Graph API )" });

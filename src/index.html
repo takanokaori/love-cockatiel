@@ -31,7 +31,6 @@
       }).catch(err => {
         console.error(err);
       });
-      console.log("get data...");
       const data = await res.json();
       const container = document.getElementById('insta-feed');
       data.forEach(item => {
