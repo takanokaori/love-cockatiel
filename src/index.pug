@@ -1,0 +1,106 @@
+- var pagename = 'love-cockatiel';
+- var ttl = 'LOVE COCKATIEL';
+- var keywords = 'オカメインコ';
+- var dec = 'オカメインコの魅力をあなたに';
+- var site_url = 'https://xev-motorshow.com/';
+//- var ogp_img = 'https://';
+- var root = '/';
+
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    //-meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no')
+    title #{ttl}
+    meta(name='keywords' content=keywords)
+    meta(name='description' content=dec)
+    //- link(rel='icon' type='image/svg+xml' href='favicon.svg')
+    link(rel='canonical', href=site_url)
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap' rel='stylesheet')
+    //- link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
+    meta(property='og:locale' content='ja_JP')
+    meta(property='og:type' content='website')
+    meta(property='og:site_name' content=ttl)
+    meta(property='og:url' content=site_url)
+    meta(property='og:title' content=ttl)
+    meta(property='og:description' content=dec)
+    //- meta(property='og:image' content=ogp_img)
+    //- meta(name='twitter:card' content='summary_large_image')
+    //- meta(name='twitter:title' content=ttl)
+    //- meta(name='twitter:description' content=dec)
+    //- meta(name='twitter:image:src' content=ogp_img)
+    //- meta(name='twitter:url' content=site_url)
+    //-
+  | 
+  //- | Google tag (gtag.js) 
+  //-
+    script(async src="https://www.googletagmanager.com/gtag/js?id=G-STCBTD9WZW")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-STCBTD9WZW');
+  |
+  body#pagetop
+    main.main 
+      header.header
+        .header__block
+          .header__text
+            h1.h1 L<span>O</span>VE C<span>O</span>CKATIEL
+            p オカメインコの魅力をあなたに
+        figure.header__img
+          img(src='img/hero.jpg', alt='')
+      section.feature.l-content
+        .feature__text-block
+          .feature__img 
+            img(src='img/feature.jpg',alt='')
+          h2.h2 オカメインコの世界へようこそ！
+          p.feature__text 表情豊かな冠に、赤くて愛らしいまんまるほっぺ。<br>歌って踊るおしゃべりバード。それがオカメインコです。<br>臆病で、甘えん坊で、家族が大好き。<br>まだ知らない人も、すでに夢中な人も、オカメインコの魅力をぜひ知ってください。
+      section.l-content 
+        .love01.l-love
+          .l-love__img
+            img(src='img/love-01.jpg', alt='')
+          .l-love__text-block 
+            h3.h3 オカメインコの魅力その1：愛らしい外見
+            p まんまるの頬にちょこんと色づくパッチ。<br>まるで笑っているかのような表情に思わずにっこり。<br>ルチノー、パイド、シナモン、ホワイトフェイス…<br>品種改良により、カラーバリエーションも豊富です。<br>あなたの"推しオカメ"、きっと見つかります。
+      section.gallery 
+        .gallery-block 
+          img(src='img/gallery-01.jpg', alt='')
+          img(src='img/gallery-02.jpg', alt='')
+          img(src='img/gallery-03.jpg', alt='')
+          img(src='img/gallery-04.jpg', alt='')
+        .gallery-block 
+          img(src='img/gallery-01.jpg', alt='')
+          img(src='img/gallery-02.jpg', alt='')
+          img(src='img/gallery-03.jpg', alt='')
+          img(src='img/gallery-04.jpg', alt='')
+        .gallery-block 
+          img(src='img/gallery-01.jpg', alt='')
+          img(src='img/gallery-02.jpg', alt='')
+          img(src='img/gallery-03.jpg', alt='')
+          img(src='img/gallery-04.jpg', alt='')
+      section.l-content 
+        .love02.l-love
+          .l-love__text-block 
+            h3.h3 オカメインコの魅力その2：よく歌い、よく喋る
+            p 口笛の名手、そしておしゃべり好き。<br>お気に入りのメロディを何度も練習して披露してくれたり、<br>ときにはあなたの言葉をまねて、驚きのひとことを発したり。<br>人との暮らしを楽しみながら、日々その表現力を磨いていく様子に、きっと心を奪われることでしょう。
+          .l-love__img
+            img(src='img/love-02.jpg', alt='')
+      section.l-content 
+        .love03.l-love
+          .l-love__img
+            img(src='img/love-03.jpg', alt='')
+          .l-love__text-block 
+            h3.h3 オカメインコの魅力その3：感情表現豊か
+            p 落ち着いてるときは冠羽がぺったり、 驚いたときはピンッ！<br>オカメインコの「気持ち」は、頭の上に現れます。<br>わかりやすくてかわいくて、見ているだけで飽きません。<br>ただし……驚くと突然パニックになる、通称“オカメパニック”には要注意。<br>でもそれも、繊細な心の裏返し。そんな弱さごと愛したくなる存在です。
+      section.l-content 
+        .insta 
+          h2.h2 Instagram Gallery
+            #insta-feed.insta-feed
+      footer.footer 
+        p © 2025 MIT Licensed
+    script(type='module' src='assets/js/index.js')

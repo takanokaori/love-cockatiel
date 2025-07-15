@@ -4,11 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run pug --silent & npm run double-server",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview",
+    "pug": "pug src --hierarchy -o src --pretty -w",
     "server": "node server.js",
-    "start": "concurrently \"npm run server\" \"npm run dev\""
+    "double-server": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -21,6 +23,8 @@
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
     "postcss": "^8.5.6",
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6",
     "sass": "^1.89.2",
     "typescript": "^5.8.3",
     "vite": "^7.0.4",

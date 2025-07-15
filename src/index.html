@@ -1,52 +1,85 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instagram Latest</title>
-  <style>
-    .insta-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      margin: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Instagram 画像</h1>
-  <div id="insta-feed"></div>
-  <script type="module">
-    async function init() {
-      // セッション初期化
-      await fetch('/api/session-init', {
-        method: "POST",
-        credentials: "include",
-      });
-
-      // Instagram API呼び出し
-      // fetch("https://your-vercel-app.vercel.app/api/instagram") // 他サイトからの呼び出し
-      const res = await fetch('/api/instagram', {
-        credentials: "include",
-      }).catch(err => {
-        console.error(err);
-      });
-      const data = await res.json();
-      const container = document.getElementById('insta-feed');
-      data.forEach(item => {
-        const link = document.createElement('a');
-        link.href = item.permalink;
-        link.target = '_blank';
-        const img = document.createElement('img');
-        img.src = item.media_url;
-        img.alt = item.caption || '';
-        img.className = 'insta-image';
-        link.appendChild(img);
-        container.appendChild(link);
-      });
-    }
-
-    init();
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>LOVE COCKATIEL</title>
+    <meta name="keywords" content="オカメインコ">
+    <meta name="description" content="オカメインコの魅力をあなたに">
+    <link rel="canonical" href="https://xev-motorshow.com/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LOVE COCKATIEL">
+    <meta property="og:url" content="https://xev-motorshow.com/">
+    <meta property="og:title" content="LOVE COCKATIEL">
+    <meta property="og:description" content="オカメインコの魅力をあなたに">
+  </head> 
+  
+  <body id="pagetop">
+    <main class="main"> 
+      <header class="header">
+        <div class="header__block">
+          <div class="header__text">
+            <h1 class="h1">L<span>O</span>VE C<span>O</span>CKATIEL</h1>
+            <p>オカメインコの魅力をあなたに</p>
+          </div>
+        </div>
+        <figure class="header__img"><img src="img/hero.jpg" alt=""></figure>
+      </header>
+      <section class="feature l-content">
+        <div class="feature__text-block">
+          <div class="feature__img"> <img src="img/feature.jpg" alt=""></div>
+          <h2 class="h2">オカメインコの世界へようこそ！</h2>
+          <p class="feature__text">表情豊かな冠に、赤くて愛らしいまんまるほっぺ。<br>歌って踊るおしゃべりバード。それがオカメインコです。<br>臆病で、甘えん坊で、家族が大好き。<br>まだ知らない人も、すでに夢中な人も、オカメインコの魅力をぜひ知ってください。</p>
+        </div>
+      </section>
+      <section class="l-content"> 
+        <div class="love01 l-love">
+          <div class="l-love__img"><img src="img/love-01.jpg" alt=""></div>
+          <div class="l-love__text-block"> 
+            <h3 class="h3">オカメインコの魅力その1：愛らしい外見</h3>
+            <p>まんまるの頬にちょこんと色づくパッチ。<br>まるで笑っているかのような表情に思わずにっこり。<br>ルチノー、パイド、シナモン、ホワイトフェイス…<br>品種改良により、カラーバリエーションも豊富です。<br>あなたの"推しオカメ"、きっと見つかります。</p>
+          </div>
+        </div>
+      </section>
+      <section class="gallery"> 
+        <div class="gallery-block"> <img src="img/gallery-01.jpg" alt=""><img src="img/gallery-02.jpg" alt=""><img src="img/gallery-03.jpg" alt=""><img src="img/gallery-04.jpg" alt=""></div>
+        <div class="gallery-block"> <img src="img/gallery-01.jpg" alt=""><img src="img/gallery-02.jpg" alt=""><img src="img/gallery-03.jpg" alt=""><img src="img/gallery-04.jpg" alt=""></div>
+        <div class="gallery-block"> <img src="img/gallery-01.jpg" alt=""><img src="img/gallery-02.jpg" alt=""><img src="img/gallery-03.jpg" alt=""><img src="img/gallery-04.jpg" alt=""></div>
+      </section>
+      <section class="l-content"> 
+        <div class="love02 l-love">
+          <div class="l-love__text-block"> 
+            <h3 class="h3">オカメインコの魅力その2：よく歌い、よく喋る</h3>
+            <p>口笛の名手、そしておしゃべり好き。<br>お気に入りのメロディを何度も練習して披露してくれたり、<br>ときにはあなたの言葉をまねて、驚きのひとことを発したり。<br>人との暮らしを楽しみながら、日々その表現力を磨いていく様子に、きっと心を奪われることでしょう。</p>
+          </div>
+          <div class="l-love__img"><img src="img/love-02.jpg" alt=""></div>
+        </div>
+      </section>
+      <section class="l-content"> 
+        <div class="love03 l-love">
+          <div class="l-love__img"><img src="img/love-03.jpg" alt=""></div>
+          <div class="l-love__text-block"> 
+            <h3 class="h3">オカメインコの魅力その3：感情表現豊か</h3>
+            <p>落ち着いてるときは冠羽がぺったり、 驚いたときはピンッ！<br>オカメインコの「気持ち」は、頭の上に現れます。<br>わかりやすくてかわいくて、見ているだけで飽きません。<br>ただし……驚くと突然パニックになる、通称“オカメパニック”には要注意。<br>でもそれも、繊細な心の裏返し。そんな弱さごと愛したくなる存在です。</p>
+          </div>
+        </div>
+      </section>
+      <section class="l-content"> 
+        <div class="insta"> 
+          <h2 class="h2">Instagram Gallery
+            <div class="insta-feed" id="insta-feed"></div>
+          </h2>
+        </div>
+      </section>
+      <footer class="footer"> 
+        <p>© 2025 MIT Licensed</p>
+      </footer>
+    </main>
+    <script type="module" src="assets/js/index.js"></script>
+  </body>
 </html>
