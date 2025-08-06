@@ -1,0 +1,27 @@
+{
+  "name": "imagemin",
+  "version": "1.0.0",
+  "description": "imagemin by node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run imagemin",
+    "imagemin": "onchange -f 'add change' './src/**/*.jpg' './src/**/*.png' './src/**/*.gif' './src/**/*.svg' -- node imagemin.mjs {{changed}}"
+  },
+  "author": "koensha",
+  "license": "ISC",
+  "devDependencies": {
+    "imagemin": "^6.1.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-keep-folder": "^5.3.2",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^7.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "onchange": "^5.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "private": true
+}
