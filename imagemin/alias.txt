@@ -1,1 +1,1 @@
-alias imagemin='cd /Users/kk/Documents/02_tools/imagemin-node/; open /Users/kk/D
+alias imagemin='cd /Users/kk/Documents/02_tools/imagemin-node/; open /Users/kk/Documents/02_tools/imagemin-node/src/; npm start;'
